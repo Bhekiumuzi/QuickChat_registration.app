@@ -53,3 +53,16 @@ class QuickChat {
         String password = inputuser.nextLine();
         System.out.println("Enter cellphone");
         String cellphone = inputuser.nextLine();
+        
+   if (checkusername(username) && checkpassword(password) && checkcellphone(cellphone)) {
+
+            Storedusername = username;
+            Storedpassword = password;
+            Storedcellphone = cellphone;
+
+            System.out.println("Registration successful!");
+        } else {
+            System.out.println("Registration failed.Try again");
+
+        }
+    }

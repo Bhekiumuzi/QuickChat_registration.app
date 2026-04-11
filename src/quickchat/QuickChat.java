@@ -44,3 +44,12 @@ class QuickChat {
             return false;
         }
     }
+     void registeruser() {
+
+        System.out.println("\n======REGISTER======");
+        System.out.println("Enter username");
+        String username = inputuser.nextLine();
+        System.out.println("Enter password");
+        String password = inputuser.nextLine();
+        System.out.println("Enter cellphone");
+        String cellphone = inputuser.nextLine();

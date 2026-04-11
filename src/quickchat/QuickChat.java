@@ -75,3 +75,25 @@ class QuickChat {
         boolean success = false;
 
         System.out.println("\n======LOGIN======");
+ while (attempts > 0 && !success) {
+            System.out.println("Enter username");
+            String username = inputuser.nextLine();
+            System.out.println("Enter password");
+            String password = inputuser.nextLine();
+            System.out.println("Enter cellphone");
+            String cellphone = inputuser.nextLine();
+
+            if (username.equals(Storedusername) && password.equals(Storedpassword) && cellphone.equals(Storedcellphone)) {
+                System.out.println("Login successful! welcome back");
+                success = true;
+            } else {
+                attempts--;
+                if (attempts > 0) {
+                    System.out.println("Incorrect details.Attempts Left:" + attempts);
+                }
+            }
+        }
+        if (!success) {
+            System.out.println("Too many failed attempts.Account is locked");
+        }
+    }

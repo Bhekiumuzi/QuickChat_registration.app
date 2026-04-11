@@ -17,34 +17,36 @@ class QuickChat {
     String Storedcellphone;
     Scanner inputuser = new Scanner(System.in);
 
-  boolean CheckPin(String pin) {
-        if (pin.length() == 4 && pin.matches("\\d+")) {
+    boolean checkusername(String username) {
+
+        if (username.contains("_") && username.length() == 5) {
             return true;
         } else {
-            System.out.println("pin must be exactly 4 digits");
+            System.out.println("username not correctly formatted");
             return false;
         }
     }
 
-    boolean CheckEmail(String email) {
-        if (email.contains("@") && email.contains(".")) {
+    boolean checkpassword(String password) {
+        if (password.contains("Bucks_@1")) {
             return true;
         } else {
-            System.out.println("email is no more than 5 characters long");
+            System.out.println("password is not correctly formatted");
+            return false;
+        }
+    }
+
+    boolean checkcellphone(String cellphone) {
+        if (cellphone.length() == 12 && cellphone.contains("+27")) {
+            return true;
+        } else {
+            System.out.println("Cell phone number incorrecly formatted or does not contain international ");
             return false;
         }
 
     }
 
-    boolean CheckId(String ID) {
-        if (ID.length() == 13 && ID.matches("\\d+")) {
-            return true;
-        } else {
-            System.out.println("ID must be exactly 13 digits");
-            return false;
-        }
-    }
-     void registeruser() {
+    void registeruser() {
 
         System.out.println("\n======REGISTER======");
         System.out.println("Enter username");
@@ -53,8 +55,8 @@ class QuickChat {
         String password = inputuser.nextLine();
         System.out.println("Enter cellphone");
         String cellphone = inputuser.nextLine();
-        
-   if (checkusername(username) && checkpassword(password) && checkcellphone(cellphone)) {
+
+        if (checkusername(username) && checkpassword(password) && checkcellphone(cellphone)) {
 
             Storedusername = username;
             Storedpassword = password;
@@ -66,7 +68,8 @@ class QuickChat {
 
         }
     }
-      void userlogin() {
+
+    void userlogin() {
         if (Storedusername == null) {
             System.out.println("no user registered yet");
             return;
@@ -75,7 +78,8 @@ class QuickChat {
         boolean success = false;
 
         System.out.println("\n======LOGIN======");
- while (attempts > 0 && !success) {
+
+        while (attempts > 0 && !success) {
             System.out.println("Enter username");
             String username = inputuser.nextLine();
             System.out.println("Enter password");
@@ -97,3 +101,37 @@ class QuickChat {
             System.out.println("Too many failed attempts.Account is locked");
         }
     }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner enterMenu = new Scanner(System.in);
+        QuickChat QuickChat = new QuickChat();
+        int choice;
+        do {
+            System.out.println("\n======MENU======");
+            System.out.println("1.Rgister");
+            System.out.println("2.Login");
+            System.out.println("3.Exit");
+            choice = enterMenu.nextInt();
+            switch (choice) {
+                case 1:
+                    QuickChat.registeruser();
+                    break;
+                case 2:
+                    QuickChat.userlogin();
+                    break;
+                case 3:
+                    System.out.println("Goodbye");
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        } while (choice != 3);
+        {
+            enterMenu.close();
+        }
+    }
+
+}

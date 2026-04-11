@@ -66,3 +66,12 @@ class QuickChat {
 
         }
     }
+      void userlogin() {
+        if (Storedusername == null) {
+            System.out.println("no user registered yet");
+            return;
+        }
+        int attempts = 3;
+        boolean success = false;
+
+        System.out.println("\n======LOGIN======");
